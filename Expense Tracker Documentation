@@ -1,0 +1,121 @@
+
+
+## Overview
+The **Expense Tracker** is a simple Python program designed to help users manage their personal expenses. It allows users to:
+- Add new expenses
+- View all recorded expenses
+- Summarize expenses by category
+- Save data to a JSON file for persistence
+
+---
+
+## Features
+### 1. Add a New Expense
+Users can enter details about an expense, including:
+- **Amount** (in numerical format, e.g., `100.50`)
+- **Description** (brief detail about the expense, e.g., `Groceries`)
+- **Category** (e.g., `Food`, `Transport`)
+- **Date** (format: `YYYY-MM-DD`, defaults to today's date if left blank)
+
+**Function:** `add_expense()`
+
+**Error Handling:**
+- Ensures amount is a valid float.
+- Validates the date format.
+
+---
+
+### 2. View All Expenses
+Lists all recorded expenses in the following format:
+```
+1. YYYY-MM-DD | Category | Description | $Amount
+```
+
+**Function:** `view_expenses()`
+
+**Error Handling:**
+- Displays a message if no expenses have been recorded.
+
+---
+
+### 3. Category Summary
+Displays a summary of total expenses by category:
+```
+Category: $Total Amount
+```
+
+**Function:** `category_summary()`
+
+**Error Handling:**
+- Displays a message if no expenses have been recorded.
+
+---
+
+## Data Storage
+- Expenses are stored in a JSON file (`expenses.json`).
+- Each expense entry follows this structure:
+```json
+[
+  {
+    "amount": 50.75,
+    "description": "Groceries",
+    "category": "Food",
+    "date": "2025-03-10"
+  }
+]
+```
+
+**Functions:**
+- `load_data(file='expenses.json')`: Reads data from the JSON file.
+- `save_data(expenses, file='expenses.json')`: Saves data to the JSON file.
+
+---
+
+## Main Menu
+The main menu provides four options:
+```
+1. Add a new expense
+2. View all expenses
+3. View category summary
+4. Exit
+```
+
+**Function:** `main()`
+- Uses a dictionary (`options`) to map user choices to functions.
+- Runs an infinite loop until the user selects `4` to exit.
+- Handles invalid choices by prompting the user to select a valid option.
+
+---
+
+## Running the Program
+To run the program, use the following command:
+```
+python expense_tracker.py
+```
+
+Ensure `expenses.json` is in the same directory or will be automatically created if it does not exist.
+
+---
+
+## Error Handling
+The program handles errors such as:
+- **File not found or empty JSON:** Initializes with an empty list.
+- **Invalid date format:** Prompts the user to enter the correct format (`YYYY-MM-DD`).
+- **Invalid numeric input:** Checks if the amount can be converted to a float.
+- **Invalid menu choice:** Alerts the user to select a valid option.
+
+---
+
+## Customization
+- **Data file:** Modify the `file` argument in `load_data()` and `save_data()` to change the data file name.
+- **Date format:** Adjust the `datetime.strptime()` format string if you prefer a different date format.
+
+---
+
+## Conclusion
+This simple yet effective Expense Tracker helps users log and categorize their daily expenses with persistent data storage. The program is easy to extend, and you can add more functionalities like filtering by date range, exporting data to CSV, or visualizing trends.
+
+---
+
+Need help or want to suggest improvements? Feel free to reach out!
+
